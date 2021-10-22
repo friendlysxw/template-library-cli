@@ -1,0 +1,38 @@
+{
+  "name": "template-library-cli",
+  "version": "1.0.0",
+  "description": "模板库命令行工具：根据模板中模板生成（文件|文件夹）",
+  "main": "index.js",
+  "repository": "https://github.com/friendlysxw/template-library-cli.git",
+  "author": "shixuewen <friendlysxw@163.com>",
+  "license": "MIT",
+  "bin": {
+    "tlc": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "node test/index.js",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
+    "commit-msg": "git-cz"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --ext .js"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.0.1",
+    "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "lint-staged": "^11.2.3"
+  }
+}
