@@ -39,6 +39,8 @@
     "chalk": "^4.1.2",
     "commander": "^8.3.0",
     "inquirer": "^8.2.0",
+    "inquirer-fuzzy-path": "^2.3.0",
+    "inquirer-search-list": "^1.2.6",
     "ora": "5.4.1"
   }
 }

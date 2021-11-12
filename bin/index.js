@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const process = require('process');
 const { program } = require('commander');
-
 program
     .version(`template-library-cli ${require('../package').version}`)
     .usage('<command> [options]');
@@ -39,10 +38,10 @@ program
     .command('create')
     .description('根据模板创建(文件夹|文件)')
     .argument('<temp-name>', '模板名称')
-    .argument('<path>', '创建路径')
+    .argument('[target-path]', '目标路径，默认为当前工作目录+模板名称')
     .showHelpAfterError('(添加 --help 以获得更多信息)')
-    .action((tempName, path) => {
-        require('../lib/create')(tempName, path)
+    .action((tempName, targetPath) => {
+        require('../lib/create')(tempName, targetPath)
     });
 
 program
