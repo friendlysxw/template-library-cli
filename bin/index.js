@@ -7,6 +7,7 @@ program
 
 program
     .command('clone')
+    .alias('c')
     .description('克隆远程仓库到本地作为一个模板库')
     .argument('<repository>', '远程仓库地址')
     .argument('[repo-name]', '克隆到本地后的仓库名称，默认为原始仓库名')
@@ -18,6 +19,7 @@ program
 
 program
     .command('pull')
+    .alias('p')
     .description('拉取仓库的最新内容')
     .argument('<repo-name>', '本地仓库名称')
     .showHelpAfterError('(添加 --help 以获得更多信息)')
@@ -27,6 +29,7 @@ program
 
 program
     .command('delete')
+    .alias('d')
     .description('删除本地的一个仓库')
     .argument('<repo-name>', '本地仓库名称')
     .showHelpAfterError('(添加 --help 以获得更多信息)')
@@ -35,17 +38,19 @@ program
     });
 
 program
-    .command('create')
+    .command('generate')
+    .alias('g')
     .description('根据模板创建(文件夹|文件)')
-    .argument('<temp-name>', '模板名称')
-    .argument('[target-path]', '目标路径，默认为当前工作目录+模板名称')
+    .argument('[temp-name]', '模板名称')
+    .argument('[new-name]', '生成的新名称')
     .showHelpAfterError('(添加 --help 以获得更多信息)')
-    .action((tempName, targetPath) => {
-        require('../lib/create')(tempName, targetPath)
+    .action((tempName, newName) => {
+        require('../lib/generate')(tempName, newName)
     });
 
 program
     .command('compose')
+    .alias('ce')
     .description('根据构建文件 tlc-compose.json 构建模板库')
     .argument('<compose-path>', '构建文件路径')
     .option('-e, --export', '加上此选项为导出一个构建文件 tlc-compose.json')
@@ -56,6 +61,7 @@ program
 
 program
     .command('list')
+    .alias('l')
     .description('查看所有模板')
     .option('-r, --repository', '以仓库分组查看')
     .option('-t, --template', '以模板分组查看')
