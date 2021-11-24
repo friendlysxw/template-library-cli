@@ -48,16 +48,6 @@ program
         require('../lib/generate')(tempName, newName)
     });
 
-program
-    .command('compose')
-    .alias('ce')
-    .description('根据构建文件 tlc-compose.json 构建模板库')
-    .argument('<compose-path>', '构建文件路径')
-    .option('-e, --export', '加上此选项为导出一个构建文件 tlc-compose.json')
-    .showHelpAfterError('(添加 --help 以获得更多信息)')
-    .action((composePath, options) => {
-        require('../lib/compose')(composePath, options)
-    });
 
 program
     .command('list')
