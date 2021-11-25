@@ -21,7 +21,7 @@ program
     .command('pull')
     .alias('p')
     .description('拉取仓库的最新内容')
-    .argument('<repo-name>', '本地仓库名称')
+    .argument('[repo-name]', '本地仓库名称')
     .showHelpAfterError('(添加 --help 以获得更多信息)')
     .action((repoName) => {
         require('../lib/pull')(repoName)
