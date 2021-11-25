@@ -7,7 +7,7 @@
   "author": "shixuewen <friendlysxw@163.com>",
   "license": "MIT",
   "bin": {
-    "tlc": "./bin/index.js"
+    "tlc": "./bin/tlc.js"
   },
   "scripts": {
     "test": "node test/index.js",
