@@ -30,11 +30,12 @@ program
 program
     .command('delete')
     .alias('d')
-    .description('删除本地的一个仓库')
-    .argument('<repo-name>', '本地仓库名称')
+    .description('删除本地的一个 (仓库|模板)')
+    .argument('[name]', '本地 (仓库|模板) 名称')
+    .option('-r, --repository', '删除仓库 (不加此选项表示删除模板)', false)
     .showHelpAfterError('(添加 --help 以获得更多信息)')
-    .action((repoName) => {
-        require('../lib/delete')(repoName)
+    .action((name, options) => {
+        require('../lib/delete')(name, options)
     });
 
 program
