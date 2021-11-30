@@ -11,7 +11,7 @@ program
     .description('克隆远程仓库作为本地模板库，并生成相关配置信息')
     .argument('<repository>', '远程模板仓库地址')
     .argument('[repo-name]', '克隆到本地后的仓库名称，默认为原始仓库名')
-    .option('-t, --template', '此仓库是否直接作为模板，是则不检索仓库中的配置文件')
+    .option('-t, --template', '此仓库是否直接作为一个应用模板')
     .showHelpAfterError('(添加 --help 以获得更多信息)')
     .action((repository, repoName, options) => {
         require('../lib/clone')(repository, repoName, options)
