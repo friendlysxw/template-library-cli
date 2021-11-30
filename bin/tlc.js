@@ -34,9 +34,11 @@ program
     .description('根据模板生成（文件夹|文件）')
     .argument('[temp-name]', '模板名称')
     .argument('[new-name]', '生成（文件夹|文件）的新名称')
+    .option('-a, --app', '在应用（app）类型的模板列表中检索模板')
+    .option('-f, --file', '在文件（file）类型的模板列表中检索模板')
     .showHelpAfterError('(添加 --help 以获得更多信息)')
-    .action((tempName, newName) => {
-        require('../lib/generate')(tempName, newName)
+    .action((tempName, newName, options) => {
+        require('../lib/generate')(tempName, newName, options)
     });
 
 program
