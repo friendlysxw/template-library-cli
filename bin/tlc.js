@@ -18,6 +18,28 @@ program
     });
 
 program
+    .command('list')
+    .alias('l')
+    .description('查看（仓库|模板）列表信息')
+    .option('-r, --repository', '查看仓库列表信息')
+    .option('-t, --template', '查看模板列表信息')
+    .showHelpAfterError('(添加 --help 以获得更多信息)')
+    .action((options) => {
+        require('../lib/list')(options)
+    });
+
+program
+    .command('generate')
+    .alias('g')
+    .description('根据模板生成（文件夹|文件）')
+    .argument('[temp-name]', '模板名称')
+    .argument('[new-name]', '生成（文件夹|文件）的新名称')
+    .showHelpAfterError('(添加 --help 以获得更多信息)')
+    .action((tempName, newName) => {
+        require('../lib/generate')(tempName, newName)
+    });
+
+program
     .command('pull')
     .alias('p')
     .description('拉取模板仓库的最新内容，此操作会同步更新本地配置信息')
@@ -36,29 +58,6 @@ program
     .showHelpAfterError('(添加 --help 以获得更多信息)')
     .action((name, options) => {
         require('../lib/delete')(name, options)
-    });
-
-program
-    .command('generate')
-    .alias('g')
-    .description('根据模板生成（文件夹|文件）')
-    .argument('[temp-name]', '模板名称')
-    .argument('[new-name]', '生成（文件夹|文件）的新名称')
-    .showHelpAfterError('(添加 --help 以获得更多信息)')
-    .action((tempName, newName) => {
-        require('../lib/generate')(tempName, newName)
-    });
-
-
-program
-    .command('list')
-    .alias('l')
-    .description('查看（仓库|模板）列表信息')
-    .option('-r, --repository', '查看仓库列表信息')
-    .option('-t, --template', '查看模板列表信息')
-    .showHelpAfterError('(添加 --help 以获得更多信息)')
-    .action((options) => {
-        require('../lib/list')(options)
     });
 
 program.command('help', { hidden: true });
