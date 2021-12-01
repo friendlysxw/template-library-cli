@@ -13,9 +13,14 @@ program
     .argument('<repository>', '远程模板仓库地址')
     .argument('[name]', '克隆到本地后的仓库名称，默认为原始仓库名')
     .argument('[desc]', '对本仓库的简短描述')
-    .option('-t, --type [type]', '此仓库的仓库类型 (file: 业务文件模板) (app: 应用项目模板)')
+    .option('-a, --app', '此仓库作为应用项目模板仓库')
+    .option('-f, --file', '此仓库作为业务文件模板仓库')
     .showHelpAfterError('(添加 --help 以获得更多信息)')
-    .action((repository, name, desc, { type }) => {
+    .action((repository, name, desc, { app, file }) => {
+        let type;
+        if (Boolean(app) !== Boolean(file)) {
+            type = app ? 'app' : 'file';
+        }
         require('../lib/clone')(repository, name, desc, type)
     });
 
