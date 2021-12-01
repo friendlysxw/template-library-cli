@@ -38,10 +38,10 @@ program
 program
     .command('generate')
     .alias('g')
-    .description('根据模板生成（文件夹|文件）')
+    .description('根据模板生成（应用项目|业务文件）')
     .addArgument(new Argument('<temp-type>', '模板类型').choices(['app', 'file']))
     .argument('[temp-name]', '模板名称')
-    .argument('[new-name]', '生成（文件夹|文件）的新名称')
+    .argument('[new-name]', '生成（应用项目|业务文件）的新名称')
     .showHelpAfterError('(添加 --help 以获得更多信息)')
     .action((tempType, tempName, newName) => {
         require('../lib/generate')(tempType, tempName, newName)
