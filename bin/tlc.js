@@ -8,7 +8,6 @@ program
 program
     .command('clone')
     .alias('c')
-    .usage('[options] -- [type]')
     .description('克隆远程仓库作为本地模板库，并生成相关配置信息')
     .argument('<repository>', '远程模板仓库地址')
     .argument('[name]', '克隆到本地后的仓库名称，默认为原始仓库名')
@@ -25,17 +24,6 @@ program
     });
 
 program
-    .command('list')
-    .alias('l')
-    .description('查看（仓库|模板）列表信息')
-    .option('-r, --repository', '查看仓库列表信息')
-    .option('-t, --template', '查看模板列表信息')
-    .showHelpAfterError('(添加 --help 以获得更多信息)')
-    .action((options) => {
-        require('../lib/list')(options)
-    });
-
-program
     .command('generate')
     .alias('g')
     .description('根据模板生成（应用项目|业务文件）')
@@ -45,6 +33,17 @@ program
     .showHelpAfterError('(添加 --help 以获得更多信息)')
     .action((tempType, tempName, newName) => {
         require('../lib/generate')(tempType, tempName, newName)
+    });
+
+program
+    .command('list')
+    .alias('l')
+    .description('查看（仓库|模板）列表信息')
+    .option('-r, --repository', '查看仓库列表信息')
+    .option('-t, --template', '查看模板列表信息')
+    .showHelpAfterError('(添加 --help 以获得更多信息)')
+    .action((options) => {
+        require('../lib/list')(options)
     });
 
 program
@@ -62,10 +61,15 @@ program
     .alias('d')
     .description('删除本地的一个（仓库|模板），默认删除模板')
     .argument('[name]', '本地（仓库|模板）名称')
-    .option('-r, --repository', '删除的是否为仓库（是则删除仓库，否则删除模板）', false)
+    .option('-r, --repository', '删除的是仓库')
+    .option('-t, --template', '删除的是模板')
     .showHelpAfterError('(添加 --help 以获得更多信息)')
-    .action((name, options) => {
-        require('../lib/delete')(name, options)
+    .action((name, { repository, template }) => {
+        let type;
+        if (Boolean(repository) !== Boolean(template)) {
+            type = repository ? 'repository' : 'template';
+        }
+        require('../lib/delete')(name, type)
     });
 
 program.command('help', { hidden: true });
