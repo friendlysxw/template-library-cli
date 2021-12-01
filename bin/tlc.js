@@ -8,13 +8,15 @@ program
 program
     .command('clone')
     .alias('c')
+    .usage('[options] -- [type]')
     .description('克隆远程仓库作为本地模板库，并生成相关配置信息')
     .argument('<repository>', '远程模板仓库地址')
-    .argument('[repo-name]', '克隆到本地后的仓库名称，默认为原始仓库名')
-    .option('-t, --template', '此仓库是否直接作为一个应用模板')
+    .argument('[name]', '克隆到本地后的仓库名称，默认为原始仓库名')
+    .argument('[desc]', '对本仓库的简短描述')
+    .option('-t, --type [type]', '此仓库的仓库类型 (file: 业务文件模板) (app: 应用项目模板)')
     .showHelpAfterError('(添加 --help 以获得更多信息)')
-    .action((repository, repoName, options) => {
-        require('../lib/clone')(repository, repoName, options)
+    .action((repository, name, desc, { type }) => {
+        require('../lib/clone')(repository, name, desc, type)
     });
 
 program
