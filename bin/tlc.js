@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const process = require('process');
-const { program } = require('commander');
+const { program, Argument } = require('commander');
 program
     .version(`template-library-cli ${require('../package').version}`)
     .usage('<command> [options]');
@@ -39,13 +39,12 @@ program
     .command('generate')
     .alias('g')
     .description('根据模板生成（文件夹|文件）')
+    .addArgument(new Argument('<temp-type>', '模板类型').choices(['app', 'file']))
     .argument('[temp-name]', '模板名称')
     .argument('[new-name]', '生成（文件夹|文件）的新名称')
-    .option('-a, --app', '在应用（app）类型的模板列表中检索模板')
-    .option('-f, --file', '在文件（file）类型的模板列表中检索模板')
     .showHelpAfterError('(添加 --help 以获得更多信息)')
-    .action((tempName, newName, options) => {
-        require('../lib/generate')(tempName, newName, options)
+    .action((tempType, tempName, newName) => {
+        require('../lib/generate')(tempType, tempName, newName)
     });
 
 program
