@@ -28,6 +28,7 @@ tlc --version
 > 个人案例仓库[vue-file-template](https://github.com/friendlysxw/vue-file-templates.git)：假设此仓库为你所在公司总结的vue相关通用业务模板
 
 ### 克隆
+
 ```shell
 tlc clone|c [options] <repository> [name] [desc]
 
@@ -44,18 +45,70 @@ tlc clone|c [options] <repository> [name] [desc]
     -h, --help      显示此命令的帮助信息
 ```
 
-完整指令（交互询问更少）
-```shell
-tlc clone https://github.com/PanJiaChen/vue-admin-template.git vue-admin vue后台管理系统基础架构模板 --app
-
-tlc clone https://github.com/friendlysxw/vue-file-templates.git vue-file-templates vue相关通用业务模板 --file
-```
-缺参指令（交互询问更多）
+**example：**
+- 克隆一个应用项目模板库
 ```shell
 tlc clone https://github.com/PanJiaChen/vue-admin-template.git
+```
+![](./docs/clone-app.gif)
 
+- 克隆一个业务文件模板库
+```shell
 tlc clone https://github.com/friendlysxw/vue-file-templates.git 
 ```
+![](./docs/clone-file.gif)
+- 或者您可以一次性拼写更完整的指令（相同的效果但交互更少）
+```shell
+tlc clone https://github.com/PanJiaChen/vue-admin-template.git vue-admin vue后台管理系统基础架构模板 --app
+tlc clone https://github.com/friendlysxw/vue-file-templates.git vue-file-templates vue相关通用业务文件模板 --file
+```
+**tlc-config.json**   
+> 值得注意的是：若仓库的类型是`(file)通用业务文件`仓库，此仓库则需要一个有`tlc-config.json`配置文件,格式如下
+```json
+{
+    "templates":[
+        {
+            "name":"",  // 模板的名称
+            "desc":"",  // 模板的简短描述
+            "path":""   // 模板在当前仓库中的路径
+        }
+    ]
+}
+```
+### 生成
+
+```shell
+tlc generate|g [options] <temp-type> [temp-name] [new-name]
+
+作用：
+    根据模板生成（应用项目|业务文件）
+
+参数:
+    temp-type       模板类型 (可选: "app", "file")
+    temp-name       模板名称
+    new-name        生成（应用项目|业务文件）的新名称
+选项：
+    -h, --help      显示此命令的帮助信息
+```
+
+**example：**     
+- 生成一个应用项目
+```shell
+tlc generate app 或 tlc g app
+```
+![](./docs/generate-app.gif)
+
+- 在一个应用项目中生成业务文件
+```shell
+tlc generate file 或 tlc g file
+```
+
+或者您可以一次性拼写更完整的指令（相同的效果但交互更少）
+```shell
+tlc generate app vue-admin-basic myVueApp
+tlc generate file vue-file-templates:table user-list
+```
+
 
 ## 列表
 ```shell
@@ -70,32 +123,7 @@ tlc list|l [options]
     -h, --help      显示此命令的帮助信息
 ```
 
-### 生成
-```shell
-tlc generate|g [options] <temp-type> [temp-name] [new-name]
 
-作用：
-    根据模板生成（应用项目|业务文件）
-
-参数:
-    temp-type       模板类型 (可选: "app", "file")
-    temp-name       模板名称
-    new-name        生成（应用项目|业务文件）的新名称
-选项：
-    -h, --help      显示此命令的帮助信息
-```
-完整指令（交互询问更少）
-```shell
-tlc generate app vue-admin myApp
-
-tlc generate file vue-file-templates:table userList
-```
-缺参指令（交互询问更多）
-```shell
-tlc generate app
-
-tlc generate file
-```
 
 ### 更新
 ```shell
@@ -115,12 +143,14 @@ tlc pull|p [options] [repo-name]
 tlc delete|d [options] [name]
 
 作用：
-    拉取模板仓库的最新内容，此操作会同步更新本地配置信息
+    删除本地的一个（仓库|模板）
 
 参数:
-    -r, --repository  删除的是否为仓库（是则删除仓库，否则删除模板） (default: false)
+    name                本地（仓库|模板）名称
 选项：
-    -h, --help      显示此命令的帮助信息
+    -r, --repository    删除的是仓库
+    -t, --template      删除的是模板
+    -h, --help          显示此命令的帮助信息
 ```
 
 ## TODO
