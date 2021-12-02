@@ -1,8 +1,15 @@
 # template-library-cli
+
 [![npm](https://badge.fury.io/js/template-library-cli.svg)](http://badge.fury.io/js/template-library-cli)
 ![GitHub](https://img.shields.io/github/license/friendlysxw/template-library-cli)
 
-> 当我们具备了一些开发或业务经验时，也许我(们)该为自己准备一些项目或文件模板，在下一次开发类似功能时以供拷贝使用，然而即使准备了些模板，它们所在的文件夹时常让我(们)感觉相距甚远，居然还需要切换界面去寻找它们，此时如果我(们)能通过在当前界面的命令行一个命令便能将指定模板放到指定的位置，那岂不快哉!  so~,  这正是此`模板库工具`要做的事情。
+帮你组织并运用你所积累的模板库。
+
+当我们已经积累了一些开发或业务经验时，也许我们该为自己准备一些项目或文件模板，在下一次开发类似功能时以供拷贝使用，然而即使准备了些模板，居然还需要移动鼠标或切换界面去遥远的地方寻找它们，此时如果我们能通过在当前界面的命令行一个命令便能将指定模板放到指定的位置，那该多好!  
+
+嗯,  这正是此 `模板库工具` 能做的一些事情。
+
+
 
 ## 安装
 
@@ -21,11 +28,14 @@ tlc --version
 ```
 
 ## 使用
-> 为了方便演示，采用以下仓库作为案例仓库 (若访问速度受限，Gitee上有同款仓库)：
-> 
-> 开源知名仓库[vue-admin-template](https://github.com/PanJiaChen/vue-admin-template.git)：假设此项目为你所在公司的`后台管理系统`基础架构模板
+
+> 为了方便演示，案例均采用以下仓库作为我们的远程模板库 (若访问速度受限，Gitee上有同名仓库)：
 >
-> 个人案例仓库[vue-file-template](https://github.com/friendlysxw/vue-file-templates.git)：假设此仓库为你所在公司总结的vue相关通用业务模板
+> 个人案例仓库[vue-file-template](https://github.com/friendlysxw/vue-file-templates.git)：作为你所在公司积累的vue相关通用业务模板
+> 
+> 开源知名仓库[vue-admin-template](https://github.com/PanJiaChen/vue-admin-template.git)：作为你所在公司的`后台管理系统`基础架构模板
+
+
 
 ### 克隆
 
@@ -45,25 +55,16 @@ tlc clone|c [options] <repository> [name] [desc]
     -h, --help      显示此命令的帮助信息
 ```
 
-**example：**
-- 克隆一个应用项目模板库
-```shell
-tlc clone https://github.com/PanJiaChen/vue-admin-template.git
-```
-![](./docs/clone-app.gif)
+**案例：**
 
-- 克隆一个业务文件模板库
+- 克隆一个业务文件模板库到本地
+
 ```shell
 tlc clone https://github.com/friendlysxw/vue-file-templates.git 
 ```
-![](./docs/clone-file.gif)
-- 或者您可以一次性拼写更完整的指令（相同的效果但交互更少）
-```shell
-tlc clone https://github.com/PanJiaChen/vue-admin-template.git vue-admin vue后台管理系统基础架构模板 --app
-tlc clone https://github.com/friendlysxw/vue-file-templates.git vue-file-templates vue相关通用业务文件模板 --file
-```
-**tlc-config.json**   
-> 值得注意的是：若仓库的类型是`(file)通用业务文件`仓库，则此仓库根目录需要有一个`tlc-config.json`配置文件,格式如下
+![](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/clone-file.gif)
+
+> 值得注意的是：在克隆 `(file)通用业务文件` 类型的模板仓库时，此仓库根目录需要有一个 `tlc-config.json` 配置文件，并且其中应该存储着各种业务模板的信息，格式如下：
 ```json
 {
     "templates":[
@@ -75,6 +76,21 @@ tlc clone https://github.com/friendlysxw/vue-file-templates.git vue-file-templat
     ]
 }
 ```
+
+- 克隆一个应用项目模板库到本地
+```shell
+tlc clone https://github.com/PanJiaChen/vue-admin-template.git
+```
+![](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/clone-app.gif)
+
+
+- 或者您可以一次性拼写更完整的指令（相同的效果但交互更少）
+```shell
+tlc clone https://github.com/PanJiaChen/vue-admin-template.git vue-admin vue后台管理系统基础架构模板 --app
+
+tlc clone https://github.com/friendlysxw/vue-file-templates.git vue-file-templates vue相关通用业务文件模板 --file
+```
+
 ### 生成
 
 ```shell
@@ -91,23 +107,28 @@ tlc generate|g [options] <temp-type> [temp-name] [new-name]
     -h, --help      显示此命令的帮助信息
 ```
 
-**example：**     
-- 生成一个应用项目
-```shell
-tlc generate app 或 tlc g app
-```
-![](./docs/generate-app.gif)
+**案例：**    
 
-- 在一个应用项目中生成业务文件
+- 在我们的项目中生成业务文件
 ```shell
 tlc generate file 或 tlc g file
 ```
 
-或者您可以一次性拼写更完整的指令（相同的效果但交互更少）
+![](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/tlc-g-file.gif)
+
+
+- 初始化一个应用项目
 ```shell
-tlc generate app vue-admin-basic myVueApp
+tlc generate app 或 tlc g app
+```
+![](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/generate-app.gif)
+
+- 或者您可以一次性拼写更完整的指令（相同的效果但交互更少）
+```shell
+tlc generate app vue-admin myVueApp
 tlc generate file vue-file-templates:table user-list
 ```
+
 
 
 ## 列表
