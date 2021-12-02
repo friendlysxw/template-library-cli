@@ -63,14 +63,14 @@ tlc clone https://github.com/PanJiaChen/vue-admin-template.git vue-admin vue后�
 tlc clone https://github.com/friendlysxw/vue-file-templates.git vue-file-templates vue相关通用业务文件模板 --file
 ```
 **tlc-config.json**   
-> 值得注意的是：若仓库的类型是`(file)通用业务文件`仓库，此仓库则需要一个有`tlc-config.json`配置文件,格式如下
+> 值得注意的是：若仓库的类型是`(file)通用业务文件`仓库，则此仓库根目录需要有一个`tlc-config.json`配置文件,格式如下
 ```json
 {
     "templates":[
         {
-            "name":"",  // 模板的名称
-            "desc":"",  // 模板的简短描述
-            "path":""   // 模板在当前仓库中的路径
+            "name":"模板的名称",
+            "desc":"模板的简短描述",
+            "path":"模板在当前仓库中的路径"
         }
     ]
 }
