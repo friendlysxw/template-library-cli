@@ -13,7 +13,9 @@
     "test": "node test/index.js",
     "prepare": "husky install",
     "pre-commit": "lint-staged",
-    "commit-msg": "git-cz"
+    "commit-msg": "git-cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "release": "standard-version"
   },
   "lint-staged": {
     "*.js": [
@@ -33,7 +35,8 @@
     "eslint": "^8.0.1",
     "husky": "^7.0.4",
     "jest": "^27.3.1",
-    "lint-staged": "^11.2.3"
+    "lint-staged": "^11.2.3",
+    "standard-version": "^9.3.2"
   },
   "dependencies": {
     "chalk": "^4.1.2",
