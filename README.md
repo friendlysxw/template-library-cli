@@ -68,7 +68,7 @@ tlc clone https://github.com/friendlysxw/vue-file-templates.git
         {
             "name":"模板的名称",
             "desc":"模板的简短描述",
-            "path":"模板在当前仓库中的路径"
+            "path":"模板在当前仓库中的路径 ( 文件路径 | 目录路径 )"
         }
     ]
 }
@@ -111,7 +111,7 @@ tlc generate|g [options] <temp-type> [temp-name] [new-name]
 tlc generate file 或 tlc g file
 ```
 
-![generate-file.gif](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/tlc-g-file.gif)
+![generate-file.gif](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/tlc-generate-file.gif)
 
 **案例 2：初始化生成一个应用项目**
 
