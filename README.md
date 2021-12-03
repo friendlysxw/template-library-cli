@@ -62,7 +62,7 @@ tlc clone|c [options] <repository> [name] [desc]
 ```shell
 tlc clone https://github.com/friendlysxw/vue-file-templates.git 
 ```
-![](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/clone-file.gif)
+![clone-file.gif](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/clone-file.gif)
 
 > 值得注意的是：在克隆 `(file)通用业务文件` 类型的模板仓库时，此仓库根目录需要有一个 `tlc-config.json` 配置文件，并且其中应该存储着各种业务模板的信息，格式如下：
 ```json
@@ -81,7 +81,7 @@ tlc clone https://github.com/friendlysxw/vue-file-templates.git
 ```shell
 tlc clone https://github.com/PanJiaChen/vue-admin-template.git
 ```
-![](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/clone-app.gif)
+![clone-app.gif](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/clone-app.gif)
 
 
 - 或者您可以一次性拼写更完整的指令（相同的效果但交互更少）
@@ -114,14 +114,14 @@ tlc generate|g [options] <temp-type> [temp-name] [new-name]
 tlc generate file 或 tlc g file
 ```
 
-![](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/tlc-g-file.gif)
+![generate-file.gif](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/tlc-g-file.gif)
 
 
 - 初始化一个应用项目
 ```shell
 tlc generate app 或 tlc g app
 ```
-![](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/generate-app.gif)
+![generate-app.gif](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/generate-app.gif)
 
 - 或者您可以一次性拼写更完整的指令（相同的效果但交互更少）
 ```shell
