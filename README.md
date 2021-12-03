@@ -1,11 +1,12 @@
 # template-library-cli
 
 [![npm](https://badge.fury.io/js/template-library-cli.svg)](http://badge.fury.io/js/template-library-cli)
+![downloads](https://img.shields.io/npm/dm/template-library-cli?logo=npm)
 ![GitHub](https://img.shields.io/github/license/friendlysxw/template-library-cli)
 
 帮你组织并运用你所积累的模板库。
 
-当我们已经积累了一些开发或业务经验时，也许我们该为自己准备一些项目或文件模板，在下一次开发类似功能时以供拷贝使用，然而即使准备了些模板，居然还需要移动鼠标或切换界面去遥远的地方寻找它们，此时如果我们能通过在当前界面的命令行一个命令便能将指定模板放到指定的位置，那该多好!  
+当我们已经积累了一些开发或业务经验时，也许我们该为自己准备一些项目或文件模板，在下一次开发类似功能时以供拷贝使用，然而即使准备了些模板，居然还需要移动鼠标或切换界面去遥远的地方寻找它们，此时如果我们能通过在当前界面的命令行一个命令便能将指定模板放到指定的位置，那岂不是更好？  
 
 嗯,  这正是此 `模板库工具` 能做的一些事情。
 
@@ -55,16 +56,12 @@ tlc clone|c [options] <repository> [name] [desc]
     -h, --help      显示此命令的帮助信息
 ```
 
-**案例：**
-
-- 克隆一个业务文件模板库到本地
+**案例 1：克隆一个业务文件模板库到本地**
 
 ```shell
 tlc clone https://github.com/friendlysxw/vue-file-templates.git 
 ```
-![clone-file.gif](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/clone-file.gif)
-
-> 值得注意的是：在克隆 `(file)通用业务文件` 类型的模板仓库时，此仓库根目录需要有一个 `tlc-config.json` 配置文件，并且其中应该存储着各种业务模板的信息，格式如下：
+> 值得注意的是：在克隆 `业务文件 [file]` 类型的模板仓库时，此仓库根目录需要有一个 `tlc-config.json` 配置文件，并且其中应该存储当前仓库中的模板信息，格式如下：
 ```json
 {
     "templates":[
@@ -76,19 +73,20 @@ tlc clone https://github.com/friendlysxw/vue-file-templates.git
     ]
 }
 ```
+![clone-file.gif](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/clone-file.gif)
 
-- 克隆一个应用项目模板库到本地
+**案例 2：克隆一个应用项目模板库到本地**
 ```shell
 tlc clone https://github.com/PanJiaChen/vue-admin-template.git
 ```
 ![clone-app.gif](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/clone-app.gif)
 
 
-- 或者您可以一次性拼写更完整的指令（相同的效果但交互更少）
+**或者您可以一次性拼写更完整的指令（相同的效果但交互更少）**
 ```shell
-tlc clone https://github.com/PanJiaChen/vue-admin-template.git vue-admin vue后台管理系统基础架构模板 --app
-
 tlc clone https://github.com/friendlysxw/vue-file-templates.git vue-file-templates vue相关通用业务文件模板 --file
+
+tlc clone https://github.com/PanJiaChen/vue-admin-template.git vue-admin vue后台管理系统基础架构模板 --app
 ```
 
 ### 生成
@@ -107,17 +105,16 @@ tlc generate|g [options] <temp-type> [temp-name] [new-name]
     -h, --help      显示此命令的帮助信息
 ```
 
-**案例：**    
+**案例 1：在我们的项目中生成业务文件**
 
-- 在我们的项目中生成业务文件
 ```shell
 tlc generate file 或 tlc g file
 ```
 
 ![generate-file.gif](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/tlc-g-file.gif)
 
+**案例 2：初始化生成一个应用项目**
 
-- 初始化一个应用项目
 ```shell
 tlc generate app 或 tlc g app
 ```
