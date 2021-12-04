@@ -110,8 +110,7 @@ tlc generate|g [options] <temp-type> [temp-name] [new-name]
 ```shell
 tlc generate file 或 tlc g file
 ```
-
-![generate-file.gif](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/tlc-generate-file.gif)
+[![generate-file.gif](https://sxw-img.oss-cn-beijing.aliyuncs.com/template-library-cli/tlc-generate-file.gif)](http://img.shixuewen.top/template-library-cli/tlc-generate-file.gif)
 
 **案例 2：初始化生成一个应用项目**
 
