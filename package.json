@@ -1,6 +1,6 @@
 {
   "name": "template-library-cli",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "模板库命令行工具：根据模板中模板生成（文件|文件夹）",
   "main": "index.js",
   "repository": "https://github.com/friendlysxw/template-library-cli.git",
